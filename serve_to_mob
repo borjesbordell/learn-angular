@@ -1,0 +1,10 @@
+#!/bin/bash
+if [[ $# -eq 0 ]] ; then
+	echo 'Please provide a port number as first argument'
+	        exit 0
+	fi
+LOCALIP="$(ip route get 8.8.8.8 | awk '{print $NF; exit}')"
+port=$1
+echo "Starting server on ${LOCALIP}:$port"
+
+ng serve --port="${port}" --host="${LOCALIP}" --open

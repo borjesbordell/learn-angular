@@ -1,0 +1,8 @@
+@mixin v-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card {
+    @include v-center();
+}
