@@ -1,12 +1,11 @@
 @import "~bootswatch/dist/solar/variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/solar/bootswatch";
-
 $sm: 8px;
 $md: 16px;
 $lg: 32px;
-
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -21,4 +20,10 @@ body {
 .content {
     flex: 1;
     padding: $md;
+    display: flex;
+    flex-direction: column;
+    >*:not(router-outlet) {
+        flex: 1;
+        display: block;
+    }
 }

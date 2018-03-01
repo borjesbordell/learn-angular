@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var $: any;
+declare let $: any;
 
 @Component({
   selector: 'app-nav',
@@ -14,21 +14,11 @@ export class NavComponent implements OnInit {
   ngOnInit() {
   }
 
-  // let isOpen = true;
-
-  // menuLinkClicked() {
-  //   console.log('clicked');
-  //   if (!isOpen) {
-  //     $('#navbarColor02').addClass('open');
-  //   } else {
-  //     $('#navbarColor02').removeClass('open');
-  //   }
-  //   isOpen = !isOpen;
-  // }
-
   menuClick(): void {
-    console.log('clicked');
-    $('#navbarColor02').collapse();
+    const w = window.innerWidth;
+    if (w < 992) {
+      $('#navbarColor02').collapse('toggle');
+    }
   }
 
 }
