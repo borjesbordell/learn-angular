@@ -1,8 +1,17 @@
-$sm: 10px;
-$md: 20px;
-$lg: 40px;
+$sm: 8px;
+$md: 16px;
+$lg: 32px;
 
 #logo {
     max-height: 40px;
     margin-right: $md;
+}
+
+// #navbarColor02 {
+//     transition: height 0.35s ease;
+// }
+
+#navbarColor02 > form > input {
+    width: auto;
+    margin-right: $sm;
 }
