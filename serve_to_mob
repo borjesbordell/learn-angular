@@ -5,6 +5,6 @@ if [[ $# -eq 0 ]] ; then
 	fi
 LOCALIP="$(ip route get 8.8.8.8 | awk '{print $NF; exit}')"
 port=$1
-echo "Starting server on ${LOCALIP}:$port"
+echo "Starting server on ${LOCALIP}:$port | For mock API type: npm run start-mockapi"
 
 ng serve --port="${port}" --host="${LOCALIP}" --open
