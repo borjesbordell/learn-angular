@@ -1,28 +1,41 @@
 <div class="jumbotron">
-  <h3>PortfolioComponent</h3>
+    <h3>PortfolioComponent</h3>
+    <div>
+        <label>Project name:
+    <input #projectName />
+  </label>
+        <!-- (click) passes input value to add() and then clears the input -->
+        <button (click)="add(projectName.value); projectName.value=''">
+    add
+  </button>
+    </div>
+    
+    <div id="project" *ngIf="project">
+        <h3>{{ project.id }}, {{ project.name }}</h3>
+    </div>
 </div>
 
 <div class="row">
-  <div class="col-md-6">
-    <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
-      <div class="card-header">Project 1</div>
-      <div class="card-body">
-        <h4 class="card-title">My first project</h4>
-        <p class="card-text">This is some info about this project...</p>
-      </div>
+    <div class="col-md-6">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+            <div class="card-header">Project 1</div>
+            <div class="card-body">
+                <h4 class="card-title">My first project</h4>
+                <p class="card-text">This is some info about this project...</p>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="col-md-6">
-    <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-      <div class="card-header">Project 2</div>
-      <div class="card-body">
-        <h4 class="card-title">My second project</h4>
-        <p class="card-text">This is some info about this project...</p>
-      </div>
+    <div class="col-md-6">
+        <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+            <div class="card-header">Project 2</div>
+            <div class="card-body">
+                <h4 class="card-title">My second project</h4>
+                <p class="card-text">This is some info about this project...</p>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <ul *ngFor="let project of projects">
-    <li>Id: {{ project.id }}, name: {{ project.name }}</li>
+    <li class="project-list" (click)="getProject(project.id)">Id: {{ project.id }}, name: {{ project.name }}</li>
 </ul>

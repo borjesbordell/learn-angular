@@ -6,3 +6,21 @@
 .card {
     @include v-center();
 }
+
+.project-list {
+    cursor: pointer;
+}
+
+.project-list:hover {
+    border-bottom: 1px solid;
+}
+
+#project {
+    position: fixed;
+    right: 10%;
+    top: 50%;
+    background: green;
+    z-index: 10;
+    color: #fff;
+    padding: 10px;
+}

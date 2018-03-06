@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../project';
 import { ProjectService } from '../project.service';
 
-import { HttpClient } from '@angular/common/http';
-
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
@@ -13,32 +11,30 @@ import { HttpClient } from '@angular/common/http';
 export class PortfolioComponent implements OnInit {
 
   projects: Project[];
+  
+  project: any;
 
   constructor(
-        private projectService: ProjectService,
-        private http: HttpClient
+        private projectService: ProjectService
     ) { }
 
   ngOnInit() {
-      
-    // this.getProjects();
-    
-    this.getData();
-    
-    // this.projects = this.http.get<Project[]>('http://localhost:3405/projects');
-    
-    // Typ nåt sånt här:
-    // console.log(this.http.get<Project[]>('http://localhost:3404/projects')
-                //   .subscribe(result => this.projects = result);
-  }
-
-  getProjects(): void {
-    this.projectService.getProjects().subscribe(projects => this.projects = projects);
-    console.log(this.projects);
+    this.getProjects();
   }
   
-  getData(): void {
-      this.projectService.getData().subscribe(projects => this.projects = projects);
+  getProjects(): void {
+      this.projectService.getProjects()
+        .subscribe(projects => this.projects = projects);
+  }
+  
+  getProject(id: number): void {
+    //   TODO: when clicked - show projectComponent by routerLink (component already generated)
+      this.projectService.getProject(id)
+        .subscribe(project => this.project = project);
+  }
+  
+  add(project: string): void {
+      console.log(project);
   }
   
 

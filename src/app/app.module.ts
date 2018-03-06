@@ -13,6 +13,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 
 import { ProjectService } from './project.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     HomeComponent,
     AboutComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
