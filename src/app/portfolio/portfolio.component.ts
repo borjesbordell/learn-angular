@@ -36,6 +36,13 @@ export class PortfolioComponent implements OnInit {
   add(project: string): void {
       console.log(project);
   }
+
+  update(id: number, name: string): void {
+    console.log(`id=${id} name=${name}`);
+    console.log(this.project);
+    this.projectService.updateProject(this.project)
+      .subscribe();
+  }
   
 
 }

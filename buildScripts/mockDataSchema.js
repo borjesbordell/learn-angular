@@ -3,15 +3,16 @@ var schema = {
     "properties": {
       "projects": {
         "type": "array",
-        "minItems": 100,
-        "maxItems": 150,
+        "minItems": 4,
+        "maxItems": 5,
         "items": {
           "type": "object",
           "properties": {
             id: {
               "type": "integer",
               "unique": true,
-              "minimum": 1
+              "minimum": 1,
+              "maximum": 20,
             },
             "name": {
               "type": "string",
