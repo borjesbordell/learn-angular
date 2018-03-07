@@ -15,7 +15,7 @@
         <br>
         <input #updateName placeholder="Update name..." (keyup.enter)="update(updateName.value); updateName.value=''"
         />
-        <button (click)="update(updateName.value); updateName.value=''">
+        <button (click)="update(updateName.value, project); updateName.value=''">
             update
         </button>
     </div>
