@@ -22,4 +22,16 @@ describe('AboutComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should have about to be of type 'Number'`, async(() => {
+    const fixture = TestBed.createComponent(AboutComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.about).toEqual(jasmine.any(Number));
+  }));
+
+  it(`should have about to equal 43`, async(() => {
+    const fixture = TestBed.createComponent(AboutComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.about).toEqual(43);
+  }));
 });
