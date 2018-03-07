@@ -54,7 +54,7 @@ export class ProjectService {
   }
 
   updateProject(project: Project): Observable<any> {
-    console.log(project);  
+    console.log(project);
 
     return this.http.put(`${this._projectsUrl}/${project.id}` //denna är cp
     , project, httpOptions)
@@ -63,6 +63,25 @@ export class ProjectService {
         catchError(this.handleError(`updateProject id=${project.id}`))
       )
   }
+  
+  /** POST: add a new project to the server */
+    addProject (project: Project): Observable<Project> {
+      return this.http.post<Project>(this._projectsUrl, project, httpOptions).pipe(
+        tap((project: Project) => this.log(`added project w/ id=${project.id}`)),
+        catchError(this.handleError<Project>('addProject'))
+      );
+    }
+  
+  /** DELETE: delete the project from the server */
+    deleteProject (project: Project | number): Observable<Project> {
+      const id = typeof project === 'number' ? project : project.id;
+      const url = `${this._projectsUrl}/${id}`;
+    
+      return this.http.delete<Project>(url, httpOptions).pipe(
+        tap(_ => this.log(`deleted project id=${id}`)),
+        catchError(this.handleError<Project>('deleteProject'))
+      );
+    }
 
 
 

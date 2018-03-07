@@ -33,8 +33,13 @@ export class PortfolioComponent implements OnInit {
         .subscribe(project => this.project = project);
   }
   
-  add(project: string): void {
-      console.log(project);
+  add(name: string): void {
+      name = name.trim();
+      if(!name) { return ; }
+      this.projectService.addProject( { name } as Project)
+        .subscribe(project => {
+            this.projects.push(project);
+        });
   }
 
   update(id: number, name: string): void {
@@ -42,6 +47,11 @@ export class PortfolioComponent implements OnInit {
     console.log(this.project);
     this.projectService.updateProject(this.project)
       .subscribe();
+  }
+  
+  delete(project: Project): void {
+      this.projects = this.projects.filter(p => p !== project);
+      this.projectService.deleteProject(project).subscribe();
   }
   
 

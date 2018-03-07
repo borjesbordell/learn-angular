@@ -24,5 +24,6 @@
 </div>
 
 <ul *ngFor="let project of projects">
-    <li class="project-list" (click)="getProject(project.id)">Id: {{ project.id }}, name: {{ project.name }}</li>
+    <li><div class="project-list" (click)="getProject(project.id)">Id: {{ project.id }}, name: {{ project.name }} </div><button class="delete" title="delete project"
+    (click)="delete(project)">x</button></li>
 </ul>
