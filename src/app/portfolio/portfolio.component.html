@@ -13,7 +13,7 @@
     <div id="project" *ngIf="project">
         <h3>{{ project.id }}, {{ project.name }}</h3>
         <br>
-        <input #updateName placeholder="Update name..." (keyup.enter)="update(updateName.value); updateName.value=''"
+        <input #updateName placeholder="Update name..." (keyup.enter)="update(updateName.value, project); updateName.value=''"
         />
         <button (click)="update(updateName.value, project); updateName.value=''">
             update
