@@ -2,7 +2,7 @@
     <h3>PortfolioComponent</h3>
     <div>
         <label>Project name:
-            <input #projectName />
+            <input #projectName (keyup.enter)="add(projectName.value); projectName.value=''"/>
         </label>
         <!-- (click) passes input value to add() and then clears the input -->
         <button (click)="add(projectName.value); projectName.value=''">
@@ -13,11 +13,9 @@
     <div id="project" *ngIf="project">
         <h3>{{ project.id }}, {{ project.name }}</h3>
         <br>
-        <input #updateId placeholder="Id" (keyup.enter)="update(updateId.value, updateName.value); updateId.value=''; updateName.value=''"
+        <input #updateName placeholder="Update name..." (keyup.enter)="update(updateName.value); updateName.value=''"
         />
-        <input #updateName placeholder="Name" (keyup.enter)="update(updateId.value, updateName.value); updateId.value=''; updateName.value=''"
-        />
-        <button (click)="update(updateId.value, updateName.value); updateId.value=''; updateName.value=''">
+        <button (click)="update(updateName.value); updateName.value=''">
             update
         </button>
     </div>

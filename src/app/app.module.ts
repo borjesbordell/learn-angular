@@ -14,6 +14,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ProjectService } from './project.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectComponent } from './project/project.component';
+import { SearchProjectsComponent } from './search-projects/search-projects.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProjectComponent } from './project/project.component';
     HomeComponent,
     AboutComponent,
     PortfolioComponent,
-    ProjectComponent
+    ProjectComponent,
+    SearchProjectsComponent
   ],
   imports: [
     BrowserModule,

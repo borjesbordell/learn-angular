@@ -53,36 +53,46 @@ export class ProjectService {
     );
   }
 
+  /** PUT: update the hero on the server */
   updateProject(project: Project): Observable<any> {
-    console.log(project);
-
-    return this.http.put(`${this._projectsUrl}/${project.id}` //denna är cp
-    , project, httpOptions)
-      .pipe(
+    const url = `${this._projectsUrl}/${project.id}`;
+    return this.http.put(url // Have a look at this
+      , project, httpOptions).pipe(
         tap(_ => this.log(`updated project id=${project.id}`)),
-        catchError(this.handleError(`updateProject id=${project.id}`))
-      )
+        catchError(this.handleError<any>('updateHero'))
+      );
   }
-  
-  /** POST: add a new project to the server */
-    addProject (project: Project): Observable<Project> {
-      return this.http.post<Project>(this._projectsUrl, project, httpOptions).pipe(
-        tap((project: Project) => this.log(`added project w/ id=${project.id}`)),
-        catchError(this.handleError<Project>('addProject'))
-      );
-    }
-  
-  /** DELETE: delete the project from the server */
-    deleteProject (project: Project | number): Observable<Project> {
-      const id = typeof project === 'number' ? project : project.id;
-      const url = `${this._projectsUrl}/${id}`;
-    
-      return this.http.delete<Project>(url, httpOptions).pipe(
-        tap(_ => this.log(`deleted project id=${id}`)),
-        catchError(this.handleError<Project>('deleteProject'))
-      );
-    }
 
+  /** POST: add a new project to the server */
+  addProject(project: Project): Observable<Project> {
+    return this.http.post<Project>(this._projectsUrl, project, httpOptions).pipe(
+      tap((project: Project) => this.log(`added project w/ id=${project.id}`)),
+      catchError(this.handleError<Project>('addProject'))
+    );
+  }
+
+  /** DELETE: delete the project from the server */
+  deleteProject(project: Project | number): Observable<Project> {
+    const id = typeof project === 'number' ? project : project.id;
+    const url = `${this._projectsUrl}/${id}`;
+
+    return this.http.delete<Project>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted project id=${id}`)),
+      catchError(this.handleError<Project>('deleteProject'))
+    );
+  }
+
+  /* GET projects whose name contains search term */
+  searchProjects(term: string): Observable<Project[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Project[]>(`${this._projectsUrl}/?name=${term}`).pipe(
+      tap(_ => this.log(`found projects matching "${term}"`)),
+      catchError(this.handleError<Project[]>('searchProjects', []))
+    );
+  }
 
 
 }

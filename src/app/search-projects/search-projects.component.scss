@@ -1,0 +1,22 @@
+#search-component {
+    position: relative;
+}
+
+#search-box{
+    z-index: 99;
+}
+
+.search-result {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    list-style-type: none;
+    position: absolute;
+    width: calc(100% - 8px);
+    top: 37px;
+}
+
+.search-result > li {
+    padding: 8px;
+    border-bottom: 1px solid #e9ecef;
+}

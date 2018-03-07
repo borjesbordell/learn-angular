@@ -42,11 +42,12 @@ export class PortfolioComponent implements OnInit {
         });
   }
 
-  update(id: number, name: string): void {
-    console.log(`id=${id} name=${name}`);
-    console.log(this.project);
+  update(name: string): void {
+    this.project.name = name;
     this.projectService.updateProject(this.project)
-      .subscribe();
+      .subscribe(project => {
+        this.projects = this.projects;
+      });
   }
   
   delete(project: Project): void {

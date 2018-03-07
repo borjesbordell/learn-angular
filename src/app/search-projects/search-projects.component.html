@@ -1,0 +1,13 @@
+<div id="search-component">
+    <form class="form-inline my-2 my-lg-0" action="javascript:void(0);">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+    </form>
+
+    <ul class="search-result">
+        <li *ngFor="let project of projects$ | async">
+            <a routerLink="/detail/{{project.id}}">
+                {{project.name}}
+            </a>
+        </li>
+    </ul>
+</div>
